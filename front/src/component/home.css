@@ -1,0 +1,166 @@
+body {
+  position: relative;
+  width: 1728px;
+  height: 1117px;
+
+  background: #ffffff;
+}
+
+.rectangle5 {
+  background-color: #aa2b1d;
+  position: absolute;
+  height: 133px;
+  width: 1728px;
+  top: 0px;
+  left: 0px;
+}
+
+.image-header {
+  position: absolute;
+  width: 1728px;
+  height: 572px;
+  left: 0px;
+  top: 133px;
+}
+
+.textbrand {
+  position: absolute;
+  width: 239px;
+  height: 44px;
+  left: 67px;
+  top: 45px;
+
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 44px;
+  /* identical to box height */
+
+  color: #e5e5e5;
+}
+
+.texthome {
+  position: absolute;
+  width: 167px;
+  height: 44px;
+  left: 391px;
+  top: 45px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  /* identical to box height */
+
+  color: #e5e5e5;
+}
+
+.textmenu {
+  position: absolute;
+  width: 167px;
+  height: 44px;
+  left: 588px;
+  top: 45px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  /* identical to box height */
+
+  color: #e5e5e5;
+}
+
+.texthistori {
+  position: absolute;
+  width: 210px;
+  height: 44px;
+  left: 785px;
+  top: 45px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  /* identical to box height */
+
+  color: #e5e5e5;
+}
+
+.textlogout {
+  position: absolute;
+  width: 210px;
+  height: 44px;
+  left: 1518px;
+  top: 45px;
+
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 44px;
+  /* identical to box height */
+
+  color: #e5e5e5;
+}
+
+.textfavmenu {
+  position: absolute;
+  width: 362px;
+  height: 58px;
+  left: 67px;
+  top: 755px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 58px;
+  /* identical to box height */
+
+  color: #676767;
+}
+
+.img1 {
+  position: absolute;
+  width: 331px;
+  height: 286px;
+  left: 82px;
+  top: 857px;
+
+  border-radius: 33px;
+}
+
+.img2 {
+  position: absolute;
+  width: 331px;
+  height: 294px;
+  left: 486px;
+  top: 857px;
+
+  border-radius: 36px;
+}
+
+.img3 {
+  position: absolute;
+  width: 323px;
+  height: 347px;
+  left: 899px;
+  top: 857px;
+
+  border-radius: 34px;
+}
+
+.img4 {
+  position: absolute;
+  width: 331px;
+  height: 307px;
+  left: 1304px;
+  top: 857px;
+
+  border-radius: 36px;
+}

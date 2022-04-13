@@ -133,7 +133,11 @@ module.exports ={
             if(!bcrypt.compareSync(password, user.password)) return res.status(401).json({message:'username atau password tidak sesuai'})
 
             const token = jwt.sign({data:user}, secret)
-            return res.json({message: 'login berhasil silahkan menggunakan token dibawah ini untuk mengakses', token})
+            return res.json({
+                user : result,
+                message: 'login berhasil', 
+                token
+            })
         })
     }
 }

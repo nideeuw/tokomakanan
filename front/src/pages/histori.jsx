@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import '../component/histori.css'
-import Card from '../component/card'
+import '../component/histori.css';
+import Card from '../component/card';
+import axios from 'axios';
 
 class Histori extends Component {
     constructor(){
@@ -61,6 +62,22 @@ class Histori extends Component {
                 </div>
             </div>
         );
+    }
+
+    getHistory= () => {
+        let url = "http://localhost:8000/toko/tampil";
+
+        axios.get(url)
+        .then(response =>{
+            this.setState({history: response.data.history})
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
+
+    componentDidMount(){
+        this.getHistory()
     }
 }
 export default Histori;

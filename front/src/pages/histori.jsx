@@ -1,26 +1,66 @@
 import React, { Component } from "react";
 import '../component/histori.css'
+import Card from '../component/card'
 
 class Histori extends Component {
+    constructor(){
+        super()
+        this.state = {
+            histori: [
+                {
+                    tgl:"22-06-2022",
+                    judul:"Roti Bakar Cokelat",
+                    desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
+                    total:"Total Pesanan: ",
+                    jumlah:"1",
+                    harga: 17000,
+                    cover:"https://img.okezone.com/content/2019/06/19/298/2068239/bisa-buat-bekal-ngantor-ini-cara-buat-roti-panggang-cokelat-keju-NjZzlk07fz.jpg"
+                },
+                {
+                    tgl:"08-06-2022",
+                    judul:"Spaghetti Carbonara",
+                    desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
+                    total:"Total Pesanan: ",
+                    jumlah:"1",
+                    harga: 38000,
+                    cover:"https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/61FCB2B2-DB84-4A68-ABB8-F9FBA800BCA3/Derivates/FCB48A53-86F0-4697-BE75-7B7CE9B49EBE.jpg"
+                },
+            ],
+
+            tgl: "",
+            judul: "",
+            desc: "",
+            jumlah: "",
+            total: "",
+            harga: 0,
+            cover: "",
+            selectedItem: null,
+        }
+        this.state.filterHistori=this.state.histori
+    }
     render(){
         return (
-            <div>
-                <header className="backtgl">
-                    <h1 className="tgl">22-06-2022</h1>
-                </header>
-                <header className="backmenu">
-                    <img src="https://img.okezone.com/content/2019/06/19/298/2068239/bisa-buat-bekal-ngantor-ini-cara-buat-roti-panggang-cokelat-keju-NjZzlk07fz.jpg" 
-                    className="img" alt="" />
-                    <h1 className="judul">Roti Bakar Cokelat</h1>
-                    <h1 className="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</h1>
-                </header>
-                <header className="backproduk">
-                    <h1 className="textjml">1 Produk</h1>
-                    <h1 className="texttotal">Total Pesanan</h1>
-                    <h1 className="textharga">Rp. 17,000,00</h1>
-                </header>
+            <div className="container">
+                <input type="text" className="form-control my-2" placeholder="Pencarian"
+                value={this.state.keyword}
+                onChange={ev => this.setState({keyword: ev.target.value})}
+                onKeyUp={ev => this.searching(ev)}
+                />
+                <div className="row">
+                    { this.state.filterHistori.map( (item, index) => (
+                        <Card
+                        tgl={item.tgl}
+                        judul={item.judul}
+                        desc={item.desc}
+                        jumlah={item.jumlah}
+                        total={item.total}
+                        harga={item.harga}
+                        cover={item.cover}
+                        />
+                    ))}
+                </div>
             </div>
-        )
+        );
     }
 }
 export default Histori;

@@ -1,5 +1,5 @@
 import React from "react"
-import '../component/menu.css'
+import '../component/menuadmin.css'
     class Card extends React.Component{
     render(){
         return (

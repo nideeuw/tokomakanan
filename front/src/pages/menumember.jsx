@@ -1,5 +1,7 @@
 import React from "react";
-import Card from "../component/cardmenu";
+import Card from "../component/cardmenumember";
+import Checkout from "../pages/checkout";
+import { Link, Route, Routes } from 'react-router-dom';
 class Menu extends React.Component {
     constructor(){
         super()
@@ -24,6 +26,8 @@ class Menu extends React.Component {
     }
     render(){
         return (
+            <div>
+            <div>
             <div className="container">
                 <input type="text" className="form-control my-2" placeholder="Pencarian"
                     value={this.state.keyword}
@@ -38,17 +42,21 @@ class Menu extends React.Component {
                         gambar={item.gambar}
                         harga={item.harga}
                         deskripsi={item.deskripsi}
-                        // onEdit={ () => this.Edit(item)}
-                        // onDrop={ () => this.Drop(item)}
+                        onAdd={ () => this.Add(item)}
                         />
                         <br></br>
                         </div>
                     ))}
                 </div>
-                <button className="add" onClick={() => this.Add()} >
-                        Tambah Menu
-                </button> 
+                <Link to = "/checkout" className="checkout">Check Out</Link>
             </div>
+            <div>
+            <Routes>
+              <Route path= '/checkout' element={<Checkout />}/>
+            </Routes>
+          </div>
+          </div>
+          </div>
             )
         }
     }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import '../component/histori.css';
-import Card from '../component/card';
+import '../component/historimember.css';
+import Cardhistori from '../component/cardhistorimember';
 import axios from 'axios';
 
 class Histori extends Component {
@@ -10,31 +10,34 @@ class Histori extends Component {
             histori: [
                 {
                     tgl:"22-06-2022",
-                    judul:"Roti Bakar Cokelat",
+                    produk:"Roti Bakar Cokelat",
                     desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-                    total:"Total Pesanan: ",
-                    jumlah:"1",
+                    total:17000,
+                    jumlah:1,
+                    banyakproduk:1,
                     harga: 17000,
-                    cover:"https://img.okezone.com/content/2019/06/19/298/2068239/bisa-buat-bekal-ngantor-ini-cara-buat-roti-panggang-cokelat-keju-NjZzlk07fz.jpg"
+                    gambar:"https://img.okezone.com/content/2019/06/19/298/2068239/bisa-buat-bekal-ngantor-ini-cara-buat-roti-panggang-cokelat-keju-NjZzlk07fz.jpg"
                 },
                 {
                     tgl:"08-06-2022",
-                    judul:"Spaghetti Carbonara",
+                    produk:"Spaghetti Carbonara",
                     desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-                    total:"Total Pesanan: ",
-                    jumlah:"1",
+                    total:38000,
+                    jumlah:1,
+                    banyakproduk:1,
                     harga: 38000,
-                    cover:"https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/61FCB2B2-DB84-4A68-ABB8-F9FBA800BCA3/Derivates/FCB48A53-86F0-4697-BE75-7B7CE9B49EBE.jpg"
+                    gambar:"https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/61FCB2B2-DB84-4A68-ABB8-F9FBA800BCA3/Derivates/FCB48A53-86F0-4697-BE75-7B7CE9B49EBE.jpg"
                 },
             ],
 
             tgl: "",
-            judul: "",
+            produk: "",
             desc: "",
-            jumlah: "",
-            total: "",
+            jumlah: 0,
+            banyakproduk: 0,
+            total: 0,
             harga: 0,
-            cover: "",
+            gambar: "",
             selectedItem: null,
         }
         this.state.filterHistori=this.state.histori
@@ -49,15 +52,19 @@ class Histori extends Component {
                 />
                 <div className="row">
                     { this.state.filterHistori.map( (item, index) => (
-                        <Card
+                        <div>
+                        <Cardhistori
                         tgl={item.tgl}
-                        judul={item.judul}
+                        produk={item.produk}
                         desc={item.desc}
                         jumlah={item.jumlah}
+                        banyakproduk={item.banyakproduk}
                         total={item.total}
                         harga={item.harga}
-                        cover={item.cover}
+                        gambar={item.gambar}
                         />
+                        <br></br>
+                        </div>
                     ))}
                 </div>
             </div>

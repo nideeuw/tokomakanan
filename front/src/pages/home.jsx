@@ -1,6 +1,6 @@
 import React from "react";
 import { Carousel } from 'react-carousel-minimal';
-import Header from "../component/header";
+import Header from "./header";
 
 function Home() {
     const data = [

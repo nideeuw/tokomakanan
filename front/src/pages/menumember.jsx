@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../component/cardmenumember";
-import Header from "../component/header";
+import Header from "./header";
 class Menumember extends React.Component {
     constructor() {
         super()

@@ -1,8 +1,7 @@
-
 import React, { Component } from "react";
 import $ from "jquery";
 import Card from "../component/cardmenuadmin";
-import Header from "../component/header";
+import Header from "./header";
 import Tambahmenu from "../pages/tambahmenu";
 class MenuAdmin extends React.Component {
     constructor() {

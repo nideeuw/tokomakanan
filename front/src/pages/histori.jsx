@@ -125,3 +125,4 @@ function Histori() {
 };
 
 export default Histori;
+

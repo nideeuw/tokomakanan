@@ -1,5 +1,6 @@
 import React from "react";
 import { Carousel } from 'react-carousel-minimal';
+import Header from "../component/header";
 
 function Home() {
     const data = [
@@ -22,6 +23,7 @@ function Home() {
 
     return (
         <div className="App">
+            <Header />
             <div style={{ textAlign: "center" }}>
                 <div style={{
                     padding: "0 20px"

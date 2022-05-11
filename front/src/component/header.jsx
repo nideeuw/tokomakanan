@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, Fragment } from "react";
+import { Menu, Transition } from '@headlessui/react';
+import { Link, Route, Routes } from 'react-router-dom';
 
-export default function Header() {
+function Header(...classes) {
     const [searchInput, setSearchInput] = useState(true);
     const [mdOptionsToggle, setMdOptionsToggle] = useState(true);
     const [showMenu, setShowMenu] = useState(false);
+    classes.filter(Boolean).join(' ')
 
     return (
         <div className="">
@@ -65,7 +67,7 @@ export default function Header() {
                                                     {({ active }) => (
                                                         <a
                                                             href="#"
-                                                            className={App(
+                                                            className={Header(
                                                                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                 'block px-4 py-2 text-sm'
                                                             )}
@@ -80,7 +82,7 @@ export default function Header() {
                                                     {({ active }) => (
                                                         <a
                                                             href="#"
-                                                            className={App(
+                                                            className={Header(
                                                                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                 'block px-4 py-2 text-sm'
                                                             )}
@@ -95,7 +97,7 @@ export default function Header() {
                                                     {({ active }) => (
                                                         <a
                                                             href="/histori"
-                                                            className={App(
+                                                            className={Header(
                                                                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                 'block px-4 py-2 text-sm'
                                                             )}
@@ -110,7 +112,7 @@ export default function Header() {
                                                     {({ active }) => (
                                                         <a
                                                             href="/"
-                                                            className={App(
+                                                            className={Header(
                                                                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                 'block px-4 py-2 text-sm'
                                                             )}
@@ -157,11 +159,11 @@ export default function Header() {
                                             History
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/support" className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
-                                            Support
-                                        </a>
-                                    </li>
+                                    {/* <li>
+                    <a href="/support" className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
+                      Support
+                    </a>
+                  </li> */}
                                 </ul>
                                 <div className="md:w-2/12 justify-end flex items-center space-x-4 xl:space-x-8">
                                     <div className="hidden lg:flex items-center">
@@ -216,7 +218,7 @@ export default function Header() {
                                                             {({ active }) => (
                                                                 <a
                                                                     href="#"
-                                                                    className={App(
+                                                                    className={Header(
                                                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                         'block px-4 py-2 text-sm'
                                                                     )}
@@ -231,7 +233,7 @@ export default function Header() {
                                                             {({ active }) => (
                                                                 <a
                                                                     href="#"
-                                                                    className={App(
+                                                                    className={Header(
                                                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                         'block px-4 py-2 text-sm'
                                                                     )}
@@ -246,7 +248,7 @@ export default function Header() {
                                                             {({ active }) => (
                                                                 <a
                                                                     href="/histori"
-                                                                    className={App(
+                                                                    className={Header(
                                                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                         'block px-4 py-2 text-sm'
                                                                     )}
@@ -261,7 +263,7 @@ export default function Header() {
                                                             {({ active }) => (
                                                                 <a
                                                                     href="/"
-                                                                    className={App(
+                                                                    className={Header(
                                                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                         'block px-4 py-2 text-sm'
                                                                     )}
@@ -348,16 +350,16 @@ export default function Header() {
                                             </div>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="javascript:void(0)" className="dark:text-white flex items-center justify-between hover:underline text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800">
-                                            Support
-                                            <div>
-                                                <svg className="fill-stroke text-black dark:text-white" width={12} height={12} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg>
-                                            </div>
-                                        </a>
-                                    </li>
+                                    {/* <li>
+                    <a href="javascript:void(0)" className="dark:text-white flex items-center justify-between hover:underline text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800">
+                      Support
+                      <div>
+                        <svg className="fill-stroke text-black dark:text-white" width={12} height={12} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    </a>
+                  </li> */}
                                 </ul>
                             </div>
                             <div className="h-full flex items-end">
@@ -399,3 +401,5 @@ export default function Header() {
         </div>
     );
 }
+
+export default Header;

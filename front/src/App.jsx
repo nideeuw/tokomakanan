@@ -7,17 +7,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="body">
-      <div>
-                <header className="rectangle5">
-                    <h1 className="textbrand">Brand Name</h1>
-                    <Link to ="/" className="texthome">Home</Link>
-                    <Link to="/menuadmin" className="textmenu">Menu</Link>
-                    <Link to = "/historiadmin" className="texthistori">Histori</Link>
-                    <h1 className="textlogout">Logout</h1> 
-                </header>
-                </div>
-
+    <div>
     <div>
       <Routes>
         <Route path= '/' element={<Home />}/>

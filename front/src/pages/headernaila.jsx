@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { Menu, Transition } from '@headlessui/react';
-import { Link } from "react-router-dom";
+import { Link, Route, Routes } from 'react-router-dom';
 
 function Header(...classes) {
     const [searchInput, setSearchInput] = useState(true);
@@ -63,115 +63,68 @@ function Header(...classes) {
                                         leaveFrom="transform opacity-100 scale-100"
                                         leaveTo="transform opacity-0 scale-95"
                                     >
-                                        {(() => {
-                                            let dt = JSON.parse(localStorage.getItem("user"))
-                                            if (dt !== null) {
-                                                let obj = JSON.parse(localStorage.getItem("user"))[0]
-
-                                                let na = obj.role
-                                                if (na == "admin") {
-                                                    return (
-                                                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                            <div className="py-1 px-3">
-                                                                <Menu.Item>
-                                                                    {({ active }) => (
-                                                                        <a
-                                                                            href="/signup"
-                                                                            className={Header(
-                                                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                                'block px-4 py-2 text-sm'
-                                                                            )}
-                                                                        >
-                                                                            Add Admin
-                                                                        </a>
-                                                                    )}
-                                                                </Menu.Item>
-                                                            </div>
-                                                            <div className="py-1 px-3">
-                                                                <Menu.Item>
-                                                                    {({ active }) => (
-                                                                        <a
-                                                                            href="/"
-                                                                            className={Header(
-                                                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                                'block px-4 py-2 text-sm'
-                                                                            )}
-                                                                        >
-                                                                            Logout
-                                                                        </a>
-                                                                    )}
-                                                                </Menu.Item>
-                                                            </div>
-                                                        </Menu.Items>
-                                                    )
-                                                } else {
-                                                    return (
-                                                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                            <div className="py-1 px-3">
-                                                                <Menu.Item>
-                                                                    {({ active }) => (
-                                                                        <a
-                                                                            href="#"
-                                                                            className={Header(
-                                                                                active ? 'bg-gray-100 hover:bg-sky-700 text-gray-900' : 'text-gray-700',
-                                                                                'block px-4 py-2 text-sm'
-                                                                            )}
-                                                                        >
-                                                                            Account settings
-                                                                        </a>
-                                                                    )}
-                                                                </Menu.Item>
-                                                            </div>
-                                                            <div className="py-1 px-3">
-                                                                <Menu.Item>
-                                                                    {({ active }) => (
-                                                                        <a
-                                                                            href="#"
-                                                                            className={Header(
-                                                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                                'block px-4 py-2 text-sm'
-                                                                            )}
-                                                                        >
-                                                                            Support
-                                                                        </a>
-                                                                    )}
-                                                                </Menu.Item>
-                                                            </div>
-                                                            <div className="py-1 px-3">
-                                                                <Menu.Item>
-                                                                    {({ active }) => (
-                                                                        <a
-                                                                            href="/histori"
-                                                                            className={Header(
-                                                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                                'block px-4 py-2 text-sm'
-                                                                            )}
-                                                                        >
-                                                                            History
-                                                                        </a>
-                                                                    )}
-                                                                </Menu.Item>
-                                                            </div>
-                                                            <div className="py-1 px-3">
-                                                                <Menu.Item>
-                                                                    {({ active }) => (
-                                                                        <a
-                                                                            href="/"
-                                                                            className={Header(
-                                                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                                'block px-4 py-2 text-sm'
-                                                                            )}
-                                                                        >
-                                                                            Logout
-                                                                        </a>
-                                                                    )}
-                                                                </Menu.Item>
-                                                            </div>
-                                                        </Menu.Items>
-                                                    )
-                                                }
-                                            }
-                                        })()}
+                                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                            <div className="py-1 px-3">
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <a
+                                                            href="#"
+                                                            className={Header(
+                                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                                'block px-4 py-2 text-sm'
+                                                            )}
+                                                        >
+                                                            Account settings
+                                                        </a>
+                                                    )}
+                                                </Menu.Item>
+                                            </div>
+                                            <div className="py-1 px-3">
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <a
+                                                            href="#"
+                                                            className={Header(
+                                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                                'block px-4 py-2 text-sm'
+                                                            )}
+                                                        >
+                                                            Support
+                                                        </a>
+                                                    )}
+                                                </Menu.Item>
+                                            </div>
+                                            <div className="py-1 px-3">
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <a
+                                                            href="/histori"
+                                                            className={Header(
+                                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                                'block px-4 py-2 text-sm'
+                                                            )}
+                                                        >
+                                                            History
+                                                        </a>
+                                                    )}
+                                                </Menu.Item>
+                                            </div>
+                                            <div className="py-1 px-3">
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <a
+                                                            href="/"
+                                                            className={Header(
+                                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                                'block px-4 py-2 text-sm'
+                                                            )}
+                                                        >
+                                                            Logout
+                                                        </a>
+                                                    )}
+                                                </Menu.Item>
+                                            </div>
+                                        </Menu.Items>
                                     </Transition>
                                 </Menu>
                             </div>
@@ -192,62 +145,28 @@ function Header(...classes) {
                                         />
                                     </svg>
                                 </h1>
-
-                                {(() => {
-                                    let dt = JSON.parse(localStorage.getItem("user"))
-                                    if (dt !== null) {
-                                        let obj = JSON.parse(localStorage.getItem("user"))[0]
-
-                                        let na = obj.role
-                                        if (na == "admin") {
-                                            return (
-                                                <ul className="hidden w-8/12 md:flex items-center justify-center space-x-8">
-                                                    <li>
-                                                        <a href="/homeadmin" className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
-                                                            Home
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/menuadmin" className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
-                                                            Menu
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/histori" className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
-                                                            History
-                                                        </a>
-                                                    </li>
-                                                </ul>
-
-                                            )
-                                        } else {
-                                            return (
-                                                <ul className="hidden w-8/12 md:flex items-center justify-center space-x-8">
-                                                    <li>
-                                                        <a href="/home" className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
-                                                            Home
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/menu" className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
-                                                            Menu
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/histori" className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
-                                                            History
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            )
-                                        }
-                                    }
-                                })()}
-                                {/* <li>
+                                <ul className="hidden w-8/12 md:flex items-center justify-center space-x-8">
+                                    <li>
+                                        <a href="/home" className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
+                                            Home
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/menu" className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
+                                            Menu
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/histori" className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
+                                            History
+                                        </a>
+                                    </li>
+                                    {/* <li>
                     <a href="/support" className="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">
                       Support
                     </a>
                   </li> */}
+                                </ul>
                                 <div className="md:w-2/12 justify-end flex items-center space-x-4 xl:space-x-8">
                                     <div className="hidden lg:flex items-center">
                                         <button onClick={() => setSearchInput(!searchInput)} aria-label="search items" className="text-gray-800 dark:hover:text-gray-300 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-800">
@@ -297,115 +216,68 @@ function Header(...classes) {
                                                 leaveFrom="transform opacity-100 scale-100"
                                                 leaveTo="transform opacity-0 scale-95"
                                             >
-                                                {(() => {
-                                                    let dt = JSON.parse(localStorage.getItem("user"))
-                                                    if (dt !== null) {
-                                                        let obj = JSON.parse(localStorage.getItem("user"))[0]
-
-                                                        let na = obj.role
-                                                        if (na == "admin") {
-                                                            return (
-                                                                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                                    <div className="py-1 px-3">
-                                                                        <Menu.Item>
-                                                                            {({ active }) => (
-                                                                                <a
-                                                                                    href="/signup"
-                                                                                    className={Header(
-                                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                                        'block px-4 py-2 text-sm'
-                                                                                    )}
-                                                                                >
-                                                                                    Add Admin
-                                                                                </a>
-                                                                            )}
-                                                                        </Menu.Item>
-                                                                    </div>
-                                                                    <div className="py-1 px-3">
-                                                                        <Menu.Item>
-                                                                            {({ active }) => (
-                                                                                <a
-                                                                                    href="/"
-                                                                                    className={Header(
-                                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                                        'block px-4 py-2 text-sm'
-                                                                                    )}
-                                                                                >
-                                                                                    Logout
-                                                                                </a>
-                                                                            )}
-                                                                        </Menu.Item>
-                                                                    </div>
-                                                                </Menu.Items>
-                                                            )
-                                                        } else {
-                                                            return (
-                                                                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                                    <div className="py-1 px-3">
-                                                                        <Menu.Item>
-                                                                            {({ active }) => (
-                                                                                <a
-                                                                                    href="#"
-                                                                                    className={Header(
-                                                                                        active ? 'bg-gray-100 hover:bg-sky-700 text-gray-900' : 'text-gray-700',
-                                                                                        'block px-4 py-2 text-sm'
-                                                                                    )}
-                                                                                >
-                                                                                    Account settings
-                                                                                </a>
-                                                                            )}
-                                                                        </Menu.Item>
-                                                                    </div>
-                                                                    <div className="py-1 px-3">
-                                                                        <Menu.Item>
-                                                                            {({ active }) => (
-                                                                                <a
-                                                                                    href="#"
-                                                                                    className={Header(
-                                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                                        'block px-4 py-2 text-sm'
-                                                                                    )}
-                                                                                >
-                                                                                    Support
-                                                                                </a>
-                                                                            )}
-                                                                        </Menu.Item>
-                                                                    </div>
-                                                                    <div className="py-1 px-3">
-                                                                        <Menu.Item>
-                                                                            {({ active }) => (
-                                                                                <a
-                                                                                    href="/histori"
-                                                                                    className={Header(
-                                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                                        'block px-4 py-2 text-sm'
-                                                                                    )}
-                                                                                >
-                                                                                    History
-                                                                                </a>
-                                                                            )}
-                                                                        </Menu.Item>
-                                                                    </div>
-                                                                    <div className="py-1 px-3">
-                                                                        <Menu.Item>
-                                                                            {({ active }) => (
-                                                                                <a
-                                                                                    href="/"
-                                                                                    className={Header(
-                                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                                        'block px-4 py-2 text-sm'
-                                                                                    )}
-                                                                                >
-                                                                                    Logout
-                                                                                </a>
-                                                                            )}
-                                                                        </Menu.Item>
-                                                                    </div>
-                                                                </Menu.Items>
-                                                            )
-                                                        }
-                                                    }
-                                                })()}
+                                                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                                    <div className="py-1 px-3">
+                                                        <Menu.Item>
+                                                            {({ active }) => (
+                                                                <a
+                                                                    href="#"
+                                                                    className={Header(
+                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                                        'block px-4 py-2 text-sm'
+                                                                    )}
+                                                                >
+                                                                    Account settings
+                                                                </a>
+                                                            )}
+                                                        </Menu.Item>
+                                                    </div>
+                                                    <div className="py-1 px-3">
+                                                        <Menu.Item>
+                                                            {({ active }) => (
+                                                                <a
+                                                                    href="#"
+                                                                    className={Header(
+                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                                        'block px-4 py-2 text-sm'
+                                                                    )}
+                                                                >
+                                                                    Support
+                                                                </a>
+                                                            )}
+                                                        </Menu.Item>
+                                                    </div>
+                                                    <div className="py-1 px-3">
+                                                        <Menu.Item>
+                                                            {({ active }) => (
+                                                                <a
+                                                                    href="/histori"
+                                                                    className={Header(
+                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                                        'block px-4 py-2 text-sm'
+                                                                    )}
+                                                                >
+                                                                    History
+                                                                </a>
+                                                            )}
+                                                        </Menu.Item>
+                                                    </div>
+                                                    <div className="py-1 px-3">
+                                                        <Menu.Item>
+                                                            {({ active }) => (
+                                                                <a
+                                                                    href="/"
+                                                                    className={Header(
+                                                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                                        'block px-4 py-2 text-sm'
+                                                                    )}
+                                                                >
+                                                                    Logout
+                                                                </a>
+                                                            )}
+                                                        </Menu.Item>
+                                                    </div>
+                                                </Menu.Items>
                                             </Transition>
                                         </Menu>
                                     </div>
@@ -473,7 +345,7 @@ function Header(...classes) {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/hitori" className="dark:text-white flex items-center justify-between hover:underline text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800">
+                                        <a href="/histori" className="dark:text-white flex items-center justify-between hover:underline text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800">
                                             History
                                             <div>
                                                 <svg className="fill-stroke text-black dark:text-white" width={12} height={12} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

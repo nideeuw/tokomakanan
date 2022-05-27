@@ -1,28 +1,40 @@
 import React from "react";
 import Card from "../component/cardmenumember";
 import Header from "./header";
+import axios from "axios";
 class Menumember extends React.Component {
     constructor() {
         super()
         this.state = {
-            menu: [
-                {
-                    nama: "Cireng Bumbu Rujak",
-                    deskripsi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-                    harga: 10000,
-                    gambar: "https://asset.kompas.com/crops/43_HbqLE2nxTp3RFuxAIb09LhHI=/0x0:970x647/750x500/data/photo/2021/03/01/603c7a153936f.jpg"
-                },
-                {
-                    nama: "Spaghetti Carbonara",
-                    deskripsi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-                    harga: 38000,
-                    gambar: "https://akcdn.detik.net.id/visual/2020/06/18/spaghetti-carbonara_169.jpeg?w=750&q=90"
-                }
-            ],
+            menu: [],
+            pesanan: [],
             keyword: ""
         }
-        this.state.filterMenu = this.state.menu;
     }
+    getMenu = () => {
+        let url = "http://localhost:8000/toko/menu";
+        axios.get(url)
+            .then(response => {
+                this.setState({ menu: response.data.data })
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    Add = selectedItem => {
+        let pesan = this.state.pesanan
+        pesan.push(selectedItem)
+        this.setState({ pesanan: pesan })
+
+        localStorage.setItem("add", JSON.stringify(pesan))
+        console.log(localStorage.getItem("add"))
+    }
+
+    componentDidMount() {
+        this.getMenu()
+    }
+
     render() {
         return (
             <div>
@@ -34,7 +46,7 @@ class Menumember extends React.Component {
                         // onKeyUp={ev => this.searching(ev)}
                         /> */}
                     <div className="row">
-                        {this.state.filterMenu.map((item, index) => (
+                        {this.state.menu.map((item, index) => (
                             <div>
                                 <Card
                                     nama={item.nama}

@@ -1,6 +1,56 @@
 import React from "react";
+import { withRouter } from "../withRouter";
+import axios from "axios";
 
 class Login extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            username: "",
+            password: "",
+            message: "",
+            logged: true
+        }
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    bind = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
+    }
+
+    handleClick = () => {
+        this.props.navigate('/home');
+    }
+
+    Login = event => {
+        event.preventDefault()
+        let sendData = {
+            username: this.state.username,
+            password: this.state.password
+        }
+        let url = "http://localhost:8000/toko/user/login"
+
+        axios.post(url, sendData)
+            .then(response => {
+                this.setState({ logged: true })
+                if (this.state.logged) {
+                    let user = response.data.user
+                    let token = response.data.token
+                    console.log(user)
+                    localStorage.setItem("user", JSON.stringify(user))
+                    localStorage.setItem("token", token)
+                    console.log(localStorage.getItem("user"))
+                    this.props.navigate("/home")
+                } else {
+
+                }
+            })
+            .catch(error => {
+                this.setState({ logged: false })
+                console.log(error)
+            })
+    }
+
     render() {
         return (
             <div class="font - sans">
@@ -12,13 +62,13 @@ class Login extends React.Component {
                             <label for="" class="block mt-3 text-sm text-gray-700 text-center font-semibold">
                                 Sign in
                             </label>
-                            <form method="#" action="#" class="mt-10">
+                            <form method="#" action="#" class="mt-10" onSubmit={ev => this.Login(ev)}>
                                 <div>
-                                    <input type="email" placeholder="Email" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0" />
+                                    <input type="username" name="username" placeholder=" Email" onChange={this.bind} class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0" />
                                 </div>
 
                                 <div class="mt-7">
-                                    <input type="password" placeholder="Password" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0" />
+                                    <input type="password" name="password" placeholder=" Password" onChange={this.bind} class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0" />
                                 </div>
                                 <div class="mt-7 flex">
                                     <label for="remember_me" class="inline-flex items-center w-full cursor-pointer">
@@ -28,20 +78,20 @@ class Login extends React.Component {
                                         </span>
                                     </label>
 
-                                    <div class="w-full text-right">
+                                    {/* <div class="w-full text-right">
                                         <a class="underline text-sm text-gray-600 hover:text-gray-900" href="#">
                                             Forgot your password?
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <div class="mt-7">
-                                    <button class="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                                    <button type="submit" class="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
                                         Login
                                     </button>
                                 </div>
 
-                                <div class="flex mt-7 items-center text-center">
+                                {/* <div class="flex mt-7 items-center text-center">
                                     <hr class="border-gray-300 border-1 w-full rounded-md" />
                                     <label class="block font-medium text-sm text-gray-600 w-full">
                                         Access on
@@ -59,12 +109,12 @@ class Login extends React.Component {
 
                                         Google
                                     </button>
-                                </div>
+                                </div> */}
 
                                 <div class="mt-7">
                                     <div class="flex justify-center items-center">
                                         <label class="mr-2" >Don’t have an account?</label>
-                                        <a href="#" class=" text-blue-500 transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                                        <a href="/signup" class=" text-blue-500 transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
                                             Sign Up
                                         </a>
                                     </div>
@@ -77,4 +127,5 @@ class Login extends React.Component {
         )
     }
 }
-export default Login;
+
+export default withRouter(Login);

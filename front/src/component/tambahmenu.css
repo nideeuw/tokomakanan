@@ -1,0 +1,42 @@
+.judul{
+    position: absolute;
+    width: 398px;
+    height: 48px;
+    left: 505px;
+    top: 206px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+
+    color: #000000;
+
+}
+
+.simpan{
+    position: absolute;
+    width: 185px;
+    height: 55px;
+    left: 622px;
+    top: 801px;
+
+    background: #AA2B1D;
+    border-radius: 10px;
+
+    width: 194px;
+    height: 24px;
+    left: 618px;
+    top: 817px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+
+    color: #E5E5E5;
+}

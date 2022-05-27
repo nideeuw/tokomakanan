@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 class Login extends React.Component {
     render() {
@@ -15,7 +14,7 @@ class Login extends React.Component {
                             </label>
                             <form method="#" action="#" class="mt-10">
                                 <div>
-                                    <input type="email" placeholder="Email" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0" />
+                                    <input type="username" placeholder="Username" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0" />
                                 </div>
 
                                 <div class="mt-7">

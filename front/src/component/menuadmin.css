@@ -2,8 +2,8 @@
     position: relative;
     width: 658px;
     height: 318px;
-    left: 50px;
-    top: 150px;
+    left: 1px;
+    top: 10px;
 
     background: #F9F8F8;
     border-radius: 30px;
@@ -105,7 +105,7 @@
 
     width: 246px;
     height: 40px;
-    left: 70px;
+    left: 190px;
     top: 900px;
 
     font-family: 'Inter';
@@ -192,8 +192,8 @@
 
 .image {
     position: absolute;
-    width: 1440px;
-    height: 1024px;
+    width: 295px;
+    height: 281px;
     left: 0px;
     top: 0px;
 }
